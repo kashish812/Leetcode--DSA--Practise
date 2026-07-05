@@ -1,0 +1,87 @@
+# 008 - Rotate Array (LeetCode 189)
+
+## Problem
+
+Given an integer array `nums` and an integer `k`, rotate the array to the right by `k` positions.
+
+### Example
+
+**Input:**
+nums = [1,2,3,4,5,6,7]
+k = 3
+
+
+**Output:**
+[5,6,7,1,2,3,4]
+
+
+---
+
+## Algorithm
+
+1. Find the size of the array (`n`).
+2. If `k` is greater than `n`, update `k = k % n`.
+3. Reverse the complete array.
+4. Reverse the first `k` elements.
+5. Reverse the remaining elements.
+6. The array is now rotated to the right by `k` positions.
+
+---
+
+## Approach
+
+* Reverse the whole array.
+* Reverse the first `k` elements.
+* Reverse the remaining elements.
+* The final array is right rotated.
+
+---
+
+## Java Code
+
+```java
+class Solution {
+
+    public void rotate(int[] nums, int k) {
+
+        int n = nums.length;
+
+        k = k % n;
+
+        reverse(nums, 0, n - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, n - 1);
+    }
+
+    public void reverse(int[] nums, int start, int end) {
+
+        while (start < end) {
+
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+
+            start++;
+            end--;
+        }
+    }
+}
+```
+
+---
+
+## Time Complexity
+
+**O(n)**
+
+## Space Complexity
+
+**O(1)**
+
+## Key Points
+
+* `k` represents the number of positions to rotate.
+* Reverse the complete array.
+* Reverse the first `k` elements.
+* Reverse the remaining elements.
+* Uses the Two Pointer Approach inside the `reverse()` function.
